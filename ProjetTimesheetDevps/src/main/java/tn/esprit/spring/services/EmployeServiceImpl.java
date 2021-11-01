@@ -1,9 +1,13 @@
 package tn.esprit.spring.services;
 
 import java.util.ArrayList;
+
+
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +26,7 @@ import tn.esprit.spring.repository.TimesheetRepository;
 @Service
 public class EmployeServiceImpl implements IEmployeService {
 
+	private static final Logger l = LogManager.getLogger(EmployeServiceImpl.class);
 	@Autowired
 	EmployeRepository employeRepository;
 	@Autowired
@@ -34,6 +39,48 @@ public class EmployeServiceImpl implements IEmployeService {
 	public int ajouterEmploye(Employe employe) {
 		employeRepository.save(employe);
 		return employe.getId();
+	}
+	
+	@Override
+	public List<Employe> retrieveAllEmployes() {
+		List<Employe> employes = null; 
+		try {
+	
+			l.info("In retrieveAllEmployes() : ");
+			employes = (List<Employe>) employeRepository.findAll();  
+			for (Employe employes1 : employes) {
+				l.debug("user +++ : " + employes1);
+			} 
+			l.info("Out of retrieveAllEmpoyes() : ");
+		}catch (Exception e) {
+			l.error("Error in retrieveAllEmployes() : " + e);
+		}
+
+		return employes;
+	}
+	
+	@Override
+	public Employe addEmploye(Employe e) {
+		return employeRepository.save(e); 
+	}
+	
+	
+	@Override
+	public void deleteEmploye(int id) {
+		employeRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public Employe updateEmploye(Employe e) {
+		return employeRepository.save(e); 
+	}
+	@Override
+	public Employe retrieveEmploye(int id) {
+		l.info("in  retrieveEmploye id = " + id);
+		Employe e =  employeRepository.findById(id).orElse(null); 
+		l.info("Employe returned : " + e);
+		return e; 
 	}
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
