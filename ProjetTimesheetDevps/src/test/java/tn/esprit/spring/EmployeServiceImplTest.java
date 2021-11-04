@@ -25,7 +25,9 @@ import tn.esprit.spring.services.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EmployeServiceImplTest {
-	@Autowired
+	/*
+	 * @Autowired
+	 */
 	IEmployeService emprep; 
 	
 	private static final Logger l = LogManager.getLogger(EmployeServiceImplTest.class); 
@@ -68,10 +70,6 @@ public class EmployeServiceImplTest {
 		emprep.deleteEmploye(1);
 		Assert.assertNull(emprep.retrieveEmploye(1));
 		l.info(" employe supprimé avec succès");
-	}
-	
-
-	
-
+	} 
 	
 }
