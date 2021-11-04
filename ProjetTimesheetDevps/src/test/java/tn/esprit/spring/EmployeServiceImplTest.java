@@ -12,14 +12,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import tn.esprit.spring.entities.Employe;
-import tn.esprit.spring.entities.Entreprise;
+
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.services.*;
 
@@ -66,12 +65,12 @@ public class EmployeServiceImplTest {
 	
 	@Test
 	public void D_testDeleteEmploye() {
-		emprep.deleteEmploye(6);
-		Assert.assertNull(emprep.retrieveEmploye(6));
+		emprep.deleteEmploye(1);
+		Assert.assertNull(emprep.retrieveEmploye(1));
 		l.info(" employe supprimé avec succès");
 	}
 	
-	
+
 	
 
 	
