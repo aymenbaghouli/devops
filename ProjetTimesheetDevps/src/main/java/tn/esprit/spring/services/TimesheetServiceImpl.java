@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
@@ -62,6 +62,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
 		System.out.println("In valider Timesheet");
+
 		Employe validateur = employeRepository.findById(validateurId).get();
 		Mission mission = missionRepository.findById(missionId).get();
 		//verifier s'il est un chef de departement (interet des enum)
@@ -79,6 +80,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		}
 		if(!chefDeLaMission){
 			System.out.println("l'employe doit etre chef de departement de la mission en question");
+			
 			return;
 		}
 //

@@ -25,9 +25,9 @@ import tn.esprit.spring.services.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EmployeServiceImplTest {
-	/*
-	 * @Autowired
-	 */
+	
+	  @Autowired
+	 
 	IEmployeService emprep; 
 	
 	private static final Logger l = LogManager.getLogger(EmployeServiceImplTest.class); 
@@ -45,7 +45,7 @@ public class EmployeServiceImplTest {
 	public void B_testRetrieveAllEmploye() {
 		List<Employe> listEmployes = emprep.retrieveAllEmployes(); 
 		// if there are 7 users in DB : 
-		Assert.assertEquals(14, listEmployes.size());
+		Assert.assertEquals(25, listEmployes.size());
 	}
 	
 	
@@ -59,16 +59,16 @@ public class EmployeServiceImplTest {
 	
 	@Test
 	public void AB_testRetrieveEmploye() {
-		Employe employeRetrieved = emprep.retrieveEmploye(3); 
-		Assert.assertEquals(3, employeRetrieved.getId());
+		Employe employeRetrieved = emprep.retrieveEmploye(9); 
+		Assert.assertEquals(9, employeRetrieved.getId());
 		l.info("retrieve Employe : "+ emprep);
 	}
 	
 	
 	@Test
 	public void D_testDeleteEmploye() {
-		emprep.deleteEmploye(1);
-		Assert.assertNull(emprep.retrieveEmploye(1));
+		emprep.deleteEmploye(38);
+		Assert.assertNull(emprep.retrieveEmploye(38));
 		l.info(" employe supprimé avec succès");
 	} 
 	
