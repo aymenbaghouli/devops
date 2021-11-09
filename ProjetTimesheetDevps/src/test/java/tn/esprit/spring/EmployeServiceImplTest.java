@@ -26,6 +26,7 @@ import tn.esprit.spring.services.*;
 @SpringBootTest
 public class EmployeServiceImplTest {
 	
+	
 	  @Autowired
 	 
 	IEmployeService emprep; 
@@ -61,7 +62,7 @@ public class EmployeServiceImplTest {
 	public void AB_testRetrieveEmploye() {
 		Employe employeRetrieved = emprep.retrieveEmploye(9); 
 		Assert.assertEquals(9, employeRetrieved.getId());
-		l.info("retrieve Employe : "+ emprep);
+		l.info("retrieve Employe : ", emprep);
 	}
 	
 	
